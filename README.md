@@ -1,2 +1,2 @@
 # Photo
-The image viewing program for JaguOS
+The Image viewing program for JaguOS
