@@ -1,0 +1,16 @@
+[Desktop Entry]
+Name=Photo
+GenericName=Photo/Image Viewer
+GenericName[de]=Foto/Bildbetrachter
+Comment=View your Photos
+Comment[de]=Fotos anschauen
+
+Icon=image
+
+Type=Application
+Categories=Qt;Graphics;Viewer;Photography;
+
+Exec=/usr/share/Photo/Photo
+StartupNotify=false
+Terminal=false
+MimeType=image/bmp;image/gif;image/jpeg;image/png;image/x-portable-bitmap;image/x-portable-graymap;image/x-portable-pixmap;image/x-icns;image/x-ico;image/x-xbitmap;image/x-xpixmap;
