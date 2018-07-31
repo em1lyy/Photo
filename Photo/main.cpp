@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include <QApplication>
+#include <iostream>
 
 int main(int argc, char *argv[])
 {
@@ -14,7 +15,7 @@ int main(int argc, char *argv[])
     }
     else
     {
-        std::cout << "ARGUMENT LENGTH MUST BE 1!\n EXITING!" << endl;
+        std::cout << "ARGUMENT LENGTH MUST BE 1!\n EXITING!" << std::endl;
         return 1;
     }
 
