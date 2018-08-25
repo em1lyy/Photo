@@ -9,6 +9,7 @@ QT       += core gui
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = Photo
+TARGET.path = $$PREFIX/
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -33,11 +34,11 @@ HEADERS += \
 FORMS += \
         mainwindow.ui
 
-photo.path = /usr/share/Photo
+photo.path = $$PREFIX/usr/share/Photo
 photo.files += Photo
 photo.files += Photo.desktop
 
-desktop.path = /usr/share/applications
+desktop.path = $$PREFIX/usr/share/applications
 desktop.files += Photo.desktop
 
 INSTALLS += \
