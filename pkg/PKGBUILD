@@ -1,0 +1,26 @@
+# Maintainer: Jonas Jaguar <jonasjaguar@jagudev.net>
+pkgname=jagudev-photo
+pkgver=0.6
+pkgrel=1
+pkgdesc="The image viewing program for JaguOS"
+arch=('x86_64')
+url="https://jagudev.net"
+license=('GPL3')
+depends=(qt5-base qt5-multimedia)
+makedepends=(gcc make)
+options=()
+source=("https://github.com/jonasjaguar/Photo/archive/$pkgver.tar.gz")
+md5sums=('12a0a09cae4c96d2b51bf20481abf798')
+validpgpkeys=()
+
+
+build() {
+	cd "$srcdir/Photo-$pkgver/Photo"
+	qmake ./Photo.pro -spec linux-g++ && /usr/bin/make qmake_all
+	make
+}
+
+package() {
+	cd "$srcdir/Photo-$pkgver/Photo"
+	make INSTALL_ROOT="$pkgdir" install
+}
