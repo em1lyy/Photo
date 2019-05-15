@@ -13,8 +13,8 @@ install:
   - source /opt/qt512/bin/qt512-env.sh
 
 script:
-  - cd Commander/
-  - /opt/qt512/bin/qmake ./Commander.pro -spec linux-g++ && /usr/bin/make qmake_all
+  - cd Photo/
+  - /opt/qt512/bin/qmake ./Photo.pro -spec linux-g++ && /usr/bin/make qmake_all
   - make
 
 after_success:
