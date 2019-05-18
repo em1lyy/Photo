@@ -9,13 +9,24 @@ before_install:
   - sudo apt-get update
 
 install:
-  - sudo apt-get install qt512base qt512multimedia qt512imageformats qt512translations libgl1-mesa-dev libgl1-mesa-glx -y
+  - sudo apt-get install qt512base qt512multimedia qt512imageformats qt512translations libgl1-mesa-dev libgl1-mesa-glx fakeroot -y
   - source /opt/qt512/bin/qt512-env.sh
 
 script:
   - cd Photo/
   - /opt/qt512/bin/qmake ./Photo.pro -spec linux-g++ && /usr/bin/make qmake_all
   - make
+  - cd ../
+  - cd pkg/
+  - wget https://gist.githubusercontent.com/jonasjaguar/3cafb962541cf1064771ba54e4cf0217/raw/e76882caa4968b46715ac06a23174b97e9329a69/makedeb
+  - chmod +x makedeb
+  - sudo ./makedeb --nodeps
+  - DEBNAME=$(find . -name jagudev-photo_*)
+  - cp $DEBNAME ../jagudev-photo_current.deb
+  - cd ..
+  - cd Photo/
+  - tar cfvz ../Photo.tar.gz Photo Photo.desktop
+  - cd ..
 
 after_success:
   - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
@@ -25,6 +36,18 @@ after_failure:
   - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
   - chmod +x send.sh
   - ./send.sh failure $WEBHOOK_URL
+
+deploy:
+  provider: releases
+  api_key:
+    secure: ZkHLjs0ll6tyOmTQS1uPUuOAmRhiyzVYbfkOrLFd2dIzp7IWBsolFGfZwqSXpIYjP4MXzQAfiUekelCOer+QkELZ68VSNVI27fkMIaw4EWupv38q3gPbf3PUOTiVrVaqLaHlJNc6bvLAb+n5z7RRmgiT2PEIRplbKenDe1nkpxhPLkr1Z+yq+kY4scdVuu2g/ogyWHinsIcjutXRAYaVF4uXdvuVHJuT3joA1BbAOaDc1ngcsaINa94BVyLS+QIJ/NqkLbZFk4MFlnAtYYjrx37qWcJ0jy07Sz40b0dLqzUAxGn9TCIN868ed+sUDB7zedDk9fMTlEZwtniIbLlEyZYeOjHNC+59ysrBi+SUCEXhQJCxHZBaJtrPQuf3sMrA+usTHtjYdnIFJK9pBqmNYf9+QwmCEb5eKOUkQjIt/8oEZd4wgB1s3SFoJ5gGVVL7Ox465SJAKlwYiuHIr/abeBrIn4nSwUvHK4WSz6LOtA0DJVeIqjrvMf7nQtaa/iNSvGQ3O52MRM9SPJOcY6qiE0fifke859Zf9xzDIFByO2I2l8UdqWR6fzc9T48ZxczFpWuZTCmRiepMEFt4jjGTh0gswhRVZIPrCG3b5ZiX3VVL0PGfJbsqKGIU0R3gGRqQaARvXUT+JSm7ucerYdZBrmN+LGihAKYoD4grr2iYCiY=
+  file:
+    - Photo.tar.gz
+    - jagudev-video_current.deb
+  skip_cleanup: true
+  on:
+    repo: jonasjaguar/Photo
+    tags: true
 
 notifications:
   email:
