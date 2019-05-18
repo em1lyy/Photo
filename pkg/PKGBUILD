@@ -10,7 +10,7 @@ depends=(qt5-base qt5-multimedia)
 makedepends=(gcc make)
 options=()
 source=("https://github.com/jonasjaguar/Photo/archive/$pkgver.tar.gz")
-md5sums=('12a0a09cae4c96d2b51bf20481abf798')
+md5sums=('SKIP')
 validpgpkeys=()
 
 
