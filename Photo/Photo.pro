@@ -1,10 +1,13 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2018-07-31T17:20:50
+# Project created by QtCreator 2019-05-05T18:47:46
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui widgets dbus
+
+requires(qtConfig(filedialog))
+qtHaveModule(printsupport): QT += printsupport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -28,11 +31,13 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp
 
-HEADERS += \
-        mainwindow.h
+TRANSLATIONS = \
+         de.ts \
+         fr.ts
 
-FORMS += \
-        mainwindow.ui
+HEADERS += \
+        mainwindow.h \
+    photo-common-dbus.h
 
 photo.path = $$PREFIX/usr/share/Photo
 photo.files += Photo
@@ -43,4 +48,7 @@ desktop.files += Photo.desktop
 
 INSTALLS += \
     photo \
-    desktop
+desktop
+
+RESOURCES += \
+    photo_resources.qrc

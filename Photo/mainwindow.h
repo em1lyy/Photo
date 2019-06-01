@@ -2,29 +2,66 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <string>
-#include <QResizeEvent>
 
-namespace Ui {
-class MainWindow;
-class Photo;
-}
+#include <QMainWindow>
+#include <QImage>
+#ifndef QT_NO_PRINTER
+#include <QPrinter>
+#endif
+
+class QAction;
+class QLabel;
+class QMenu;
+class QScrollArea;
+class QScrollBar;
 
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    std::string imagePath;
-    bool resizeEnabled;
-    explicit MainWindow(QWidget *parent = 0);
-    void loadImage(std::string filename);
-    void resizeEvent(QResizeEvent* event);
-    void setResizingState();
+    MainWindow();
+    QImage image;
+    QLabel *imageLabel;
+    QScrollArea *scrollArea;
+    double scaleFactor;
     ~MainWindow();
 
+public slots:
+    bool loadFile(const QString &);
+    void open();
+    void saveAs();
+    void print();
+    void copy();
+    void paste();
+    void zoomIn();
+    void zoomOut();
+    void normalSize();
+    void fitToWindow();
+    void about();
+    void showHelp();
+
 private:
-    Ui::Photo *ui;
+    void createActions();
+    void createMenus();
+    void updateActions();
+    bool saveFile(const QString &fileName);
+    void setImage(const QImage &newImage);
+    void scaleImage(double factor);
+    void adjustScrollBar(QScrollBar *scrollBar, double factor);
+    void closeEvent(QCloseEvent *event);
+
+#ifndef QT_NO_PRINTER
+    QPrinter printer;
+#endif
+
+    QAction *saveAsAct;
+    QAction *printAct;
+    QAction *copyAct;
+    QAction *zoomInAct;
+    QAction *zoomOutAct;
+    QAction *normalSizeAct;
+    QAction *fitToWindowAct;
 };
 
 #endif // MAINWINDOW_H
