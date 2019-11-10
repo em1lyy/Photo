@@ -43,7 +43,7 @@ deploy:
     secure: ZkHLjs0ll6tyOmTQS1uPUuOAmRhiyzVYbfkOrLFd2dIzp7IWBsolFGfZwqSXpIYjP4MXzQAfiUekelCOer+QkELZ68VSNVI27fkMIaw4EWupv38q3gPbf3PUOTiVrVaqLaHlJNc6bvLAb+n5z7RRmgiT2PEIRplbKenDe1nkpxhPLkr1Z+yq+kY4scdVuu2g/ogyWHinsIcjutXRAYaVF4uXdvuVHJuT3joA1BbAOaDc1ngcsaINa94BVyLS+QIJ/NqkLbZFk4MFlnAtYYjrx37qWcJ0jy07Sz40b0dLqzUAxGn9TCIN868ed+sUDB7zedDk9fMTlEZwtniIbLlEyZYeOjHNC+59ysrBi+SUCEXhQJCxHZBaJtrPQuf3sMrA+usTHtjYdnIFJK9pBqmNYf9+QwmCEb5eKOUkQjIt/8oEZd4wgB1s3SFoJ5gGVVL7Ox465SJAKlwYiuHIr/abeBrIn4nSwUvHK4WSz6LOtA0DJVeIqjrvMf7nQtaa/iNSvGQ3O52MRM9SPJOcY6qiE0fifke859Zf9xzDIFByO2I2l8UdqWR6fzc9T48ZxczFpWuZTCmRiepMEFt4jjGTh0gswhRVZIPrCG3b5ZiX3VVL0PGfJbsqKGIU0R3gGRqQaARvXUT+JSm7ucerYdZBrmN+LGihAKYoD4grr2iYCiY=
   file:
     - Photo.tar.gz
-    - jagudev-video_current.deb
+    - jagudev-photo_current.deb
   skip_cleanup: true
   on:
     repo: jonasjaguar/Photo
