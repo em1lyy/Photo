@@ -3,7 +3,7 @@ The Image viewing program for JaguOS
   
 ## Build instructions  
 1. Clone the repository  
-`$ git clone https://github.com/jonasjaguar/Photo.git`  
+`$ git clone https://github.com/em1lyy/Photo.git`  
 2. Change to the directory  
 `$ cd Photo/Photo/`  
 3. Generate the Makefile  
